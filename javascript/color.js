@@ -1,5 +1,5 @@
 //reload
-let hexFlag = $('input[name=system]:checked').val() === 'hex' ? true : false
+let hexFlag = $('input[name=system]:checked').val() === 'hex' ? true : false 
 $('input[name=system]').click(function () {
     hexFlag = $(this).val() === 'hex' ? true : false
 })
@@ -19,16 +19,16 @@ $('.color-item').each(function () {
     new ClipboardJS(colorSelector, {
         text: function () {
             if (hexFlag) {
-                return hex2dec(color);
-            } else {
                 return '#' + color;
+            } else {
+                return hex2rgb(color);
             }
 
         }
     });
 })
 
-function hex2dec(hex) {
+function hex2rgb(hex) {
     return `rgb(${parseInt(hex.slice(0, 2), 16)},`
         + `${parseInt(hex.slice(2, 4), 16)},`
         + `${parseInt(hex.slice(4, 6), 16)})`
